@@ -289,7 +289,6 @@ export default class Bot {
 	 */
 	registerDefaultCommands({ about = true, modRoles = true, channels = true, blacklist = true } = {}) {
 		this.registerCommands([
-			HelpCommand,
 			PrefixCommand,
 			EvalCommand,
 			ListModulesCommand,
@@ -297,7 +296,10 @@ export default class Bot {
 			EnableModuleCommand,
 			DisableModuleCommand
 		]);
-		if(about) this.registerCommand(AboutCommand);
+		if(about) this.registerCommands([
+			HelpCommand,
+			AboutCommand
+		]);
 		if(modRoles) {
 			this.registerCommands([
 				ListModRolesCommand,
